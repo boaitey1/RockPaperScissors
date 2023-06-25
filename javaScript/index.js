@@ -10,15 +10,14 @@ const resultPane = document.getElementById('result_pane');
 var score = parseInt(document.getElementById('score_number').innerText) ;
 const decTitle  = document.getElementById('dec_title')
 const decBtn = document.getElementById('dec_btn')
-const column = document.getElementById('column')
 
 
+// Function to execute when player wins
 const aniwon = () => {
     setTimeout(() => {
     resultPane.classList.toggle('col3');
     document.getElementById("decWinner").classList.toggle("hide");
 
-    
     decTitle.innerText = "you win";
     decBtn.style.color = "green";
 
@@ -28,14 +27,11 @@ const aniwon = () => {
 
     document.getElementById('playerPicked').classList.toggle('winner')
     }, 500);
-  
-
-
 }
 
-const anilose= () => {
-    
-    setTimeout(() => {
+// Function to execute when player loses
+const anilose= () => {   
+  setTimeout(() => {
     resultPane.classList.toggle('col3')
     document.getElementById("decWinner").classList.toggle("hide");
 
@@ -49,14 +45,12 @@ const anilose= () => {
 
     document.getElementById('cpuPicked').classList.toggle('winner')
 
-    }, 500);
-    
-
-    
+    }, 500); 
 }
 
+// Function to execute in case of a tie
 const anidraw =() => {
-    setTimeout(() => {
+  setTimeout(() => {
     document.getElementById("decWinner").classList.toggle("hide");
 
     resultPane.classList.toggle('col3')
@@ -64,12 +58,9 @@ const anidraw =() => {
     decTitle.innerText = "it's a tie";
 
   }, 500);
-    
-    
-
 }
 
-
+// Function to append rock choice to the result pane
 const appendRock = (picked) => {
     const newElement = document.createElement('div');
     newElement.id = picked;
@@ -92,6 +83,7 @@ const appendRock = (picked) => {
   
   }
   
+// Function to append scissors choice to the result pane
   const appendScissors = (picked) => {
     const newElement = document.createElement('div');
     newElement.id = picked;
@@ -112,7 +104,8 @@ const appendRock = (picked) => {
     outerDiv.appendChild(innerDiv);
     newElement.appendChild(outerDiv);
   }
-  
+
+// Function to append paper choice to the result pane
   const appendPaper = (picked) => {
     const newElement = document.createElement('div');
     newElement.id = picked;
@@ -134,11 +127,6 @@ const appendRock = (picked) => {
     newElement.appendChild(outerDiv);
   }
 
-  appendPaper("cpuPicked");
-  appendRock("playerPicked");
-
-
-
 // generate random cpu choice
 function cpuRandom() {
   const temp = Math.floor(Math.random() * 3 + 1);
@@ -154,7 +142,6 @@ function cpuRandom() {
 
 // function to play the game
 function playGame(event) {
-
   gameSection.classList.toggle('hide');
   resultPane.classList.toggle('hide');
 
@@ -210,8 +197,7 @@ function playGame(event) {
   }
 }
 
-
-
+// Function to play the game again
 const playAgain = () => {
     if (resultPane.hasChildNodes()) {
       const playerPicked = document.getElementById('playerPicked');
@@ -226,20 +212,14 @@ const playAgain = () => {
     gameSection.classList.toggle('hide');
     resultPane.classList.toggle('hide');
     resultPane.classList.toggle('col3')
-    // column.classList.toggle('col')
   
-      document.getElementById("decWinner").classList.add("hide");
+    document.getElementById("decWinner").classList.add("hide");
 
   }
   
-
-
-
-
-  
-
+// Event listeners
 choices.forEach(choice => choice.addEventListener('click', playGame));
-decBtn.addEventListener('click',playAgain);
+decBtn.addEventListener('click', playAgain);
 
 // open and close rule modal
 rule.onclick = () => {
@@ -249,9 +229,8 @@ closeM.onclick = () => {
   modal.classList.toggle('hide');
 }  
 
+// Set score from session storage on page load
 document.addEventListener('DOMContentLoaded', () => {
   score = parseInt(sessionStorage.getItem('score')) || 0;
   document.getElementById('score_number').innerText = score;
-
-
 });
