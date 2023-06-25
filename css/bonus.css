@@ -136,7 +136,6 @@ button{
  }
   img{
     height: 60px;
- 
  }
  .choice{
     background-color: rgb(255, 255, 255);
@@ -353,5 +352,186 @@ button{
 #modal_icon:hover{
     scale: 1.5 ;
 } 
+
+
+
+@media ( max-width:375px ){
+  .container{
+      width: 85%;     }
+/*  */
+      #header{
+          width: 311px ;
+          height: 96px;
+      }
+      #score_box{
+          width: 80px;
+          height: 72px;
+          border-radius: 8px;
+      }
+      #score_title{
+          font-size: 10px;
+          letter-spacing: 1.56px;
+      }
+      #score_number{
+          font-size: 40px;
+          font-weight: 700;
+      }
+
+/*  */
+#game_section{
+  height: 300px;
+  margin-top: 70px ;
+  width: 100%;
+}
+#bg_pentagon{
+  width:  227px;
+  height: 227px;
+  top: 50px;
+}
+img{
+    height: 36px;
+}
+.choice{
+  width:  74px;
+  height: 73px;
+  box-shadow: inset 0 4px rgba(0, 0, 0, 0.158) ;
+}
+
+#scissors_out, #paper_out, #rock_out, #spock_out, #lizard_out {
+    height: 96px;
+    width: 97px;
+   
+}
+#rock_out{
+   box-shadow: 0 4px var(--rock_grad2) ;
+}
+#paper_out{
+   box-shadow: 0 4px  var(--paper_grad2);
+}
+#scissors_out{
+   box-shadow: 0 4px  var(--scissors_grad2);
+}
+#spock_out{
+     box-shadow: 0 4px var(--cyan_grad2) ;
+ }
+ #lizard_out{
+     box-shadow: 0 4px var(--lizard_grad2) ;
+ }
+ #rock{
+    grid-area:rock;
+    margin: 30px 30px 0 0 ;
+ }
+ #lizard{
+    grid-area:lizard;
+    margin: 30px 0 0 30px ;
+ }
+ #spock{
+    margin-right: 50px;
+ }
+ #paper{
+    margin-left: 50px;
+ }
+ 
+.choice::after{
+  width: 90px;
+  height: 90px;
+}
+
+
+/*  */
+  #result_pane{
+      width: 100%; 
+      margin-top: 80px ;
+      grid-template-areas:  "playerPicked cpuPicked" "ppheading cpheading";
+      place-items: center; 
+  }
+  #result_pane.col3{    
+      width: 100%; 
+      margin-top: 80px ;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: "playerPicked  cpuPicked"  "ppheading  cpheading" "decWinner decWinner";
+  }
+
+  #decWinner{
+      padding-top: 0;
+  }
+  #dec_title{
+      font-size: 44px;
+  }
+  #dec_btn{
+      font-size: 16px;
+      margin-top: 18px;
+  }
+  #cpuPicked, #playerPicked{
+      scale: 1.4; 
+     
+  }
+  #cpuPicked.winner, #playerPicked.winner{
+      z-index: -1; 
+  }
+
+/*  */
+.test{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#rule{
+  position: unset;
+  width: 128px;
+  height: 40px;
+  margin-bottom: 30px;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+
+.result_title{
+  font-size: 11px;
+  font-weight: 800;
+  margin-top: 60px;
+  margin-bottom:80px;
+
+}
+/*  */
+#modal_content{
+height: 100vh;
+width: 100%;
+border-radius: unset;
+}
+#modal_text{
+font-size: 32px;
+margin: 50px ;
+justify-content: center;
+}
+#modal_img img{
+margin-top: 90px;
+width: 100%;
+}
+#modal_icon{
+height: 32px !important;
+position: absolute;
+bottom: 10%;
+}
+
+.winner .choice::after{
+  width: 100px;
+  height: 100px;
+}
+@keyframes zoom {
+    
+    from{
+        opacity: 0;
+    }
+    to{ 
+        box-shadow: 0 0 0 20px rgba(84, 93, 131, 0.692),0 0 0 40px rgba(70, 78, 112, 0.699), 0 0 0 60px rgba(66, 74, 109, 0.7) ;
+        opacity: 0.2;
+    }
+ }
+  
+}
+
 
 
