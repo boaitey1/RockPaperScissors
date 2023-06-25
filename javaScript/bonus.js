@@ -11,28 +11,27 @@ var score = parseInt(document.getElementById('score_number').innerText) ;
 const decTitle  = document.getElementById('dec_title')
 const decBtn = document.getElementById('dec_btn')
 
-
 //function to create and append choice 
-const append = (choice, picked ) => {
-  const newElement = document.createElement('div');
-  newElement.id = picked;
-  resultPane.appendChild(newElement);
-
-  const outerDiv = document.createElement('div');
-  outerDiv.id = `${choice}_out`;
-  outerDiv.classList.add('center');
-
-  const innerDiv = document.createElement('div');
-  innerDiv.classList.add('choice', 'center');
-
-  const image = document.createElement('img');
-  image.src = `./images/icon-${choice}.svg`;
-  image.alt = `${choice}`;
-
-  innerDiv.appendChild(image);
-  outerDiv.appendChild(innerDiv);
-  newElement.appendChild(outerDiv);
-}
+  const append = (choice, picked ) => {
+    const newElement = document.createElement('div');
+    newElement.id = picked;
+    resultPane.appendChild(newElement);
+  
+    const outerDiv = document.createElement('div');
+    outerDiv.id = `${choice}_out`;
+    outerDiv.classList.add('center');
+  
+    const innerDiv = document.createElement('div');
+    innerDiv.classList.add('choice', 'center');
+  
+    const image = document.createElement('img');
+    image.src = `./images/icon-${choice}.svg`;
+    image.alt = `${choice}`;
+  
+    innerDiv.appendChild(image);
+    outerDiv.appendChild(innerDiv);
+    newElement.appendChild(outerDiv);
+  }
 
 // Function to execute when player wins
 const aniwon = () => {
@@ -85,7 +84,7 @@ const anidraw =() => {
 
 // generate random cpu choice
 function cpuRandom() {
-  const temp = Math.floor(Math.random() * 3 + 1);
+  const temp = Math.floor(Math.random() * 5 + 1);
   switch (temp) {
     case 1:
       return "rock";
@@ -93,6 +92,10 @@ function cpuRandom() {
       return "paper";
     case 3:
       return "scissors";
+    case 4:
+        return "spock";
+    case 5:
+        return "lizard";
   }
 }
 
@@ -113,9 +116,11 @@ function playGame(event) {
     anidraw();
     append(cpuChoice, "cpuPicked");
   } else if (
-    (pChoice === "rock" && cpuChoice === "scissors") ||
-    (pChoice === "paper" && cpuChoice === "rock") ||
-    (pChoice === "scissors" && cpuChoice === "paper")
+    (pChoice === "rock" && (cpuChoice === "scissors" || cpuChoice === "lizard")) ||
+    (pChoice === "paper" && (cpuChoice === "rock" || cpuChoice === "spock")) || 
+    (pChoice === "scissors" && (cpuChoice === "paper" || cpuChoice === "lizard")) || 
+    (pChoice === "lizard" && (cpuChoice === "spock" || cpuChoice === "paper")) ||
+    (pChoice === "spock" && (cpuChoice === "rock" || cpuChoice === "scissors"))
   ) {
     // Player wins
     append(pChoice, "playerPicked");
@@ -168,3 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
   score = parseInt(sessionStorage.getItem('score')) || 0;
   document.getElementById('score_number').innerText = score;
 });
+
+
+

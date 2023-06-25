@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/bonus.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Rock, Paper, Scissors, Lizard, Spock</title>
+
+</head>
+<body style="background-color: black;">
+
+  <div class="container">
+    <header id="header">
+      <img src="./images/logo-bonus.svg" alt="header logo" class="logo">
+        <div id="score_box" class="center">
+          <div id="score_title">score</div>
+          <div id="score_number">0</div>
+        </div>
+    </header>
+
+    <section id="game_section" class=" " >
+      <img id="bg_pentagon" src="/images/bg-pentagon.svg" alt="">
+      <div class="choice_btn " id="spock">
+        <div id="spock_out" class="center">
+          <div class="choice center">
+          <img src="./images/icon-spock.svg" alt="spock">
+          </div> 
+        </div>
+      </div>
+      <div class="choice_btn" id="lizard">
+        <div id="lizard_out" class="center">
+          <div class="choice center">
+          <img src="./images/icon-lizard.svg" alt="lizard">
+          </div>
+        </div>  
+      </div>
+      <div class="choice_btn " id="paper">
+        <div id="paper_out" class="center">
+          <div class="choice center">
+          <img src="./images/icon-paper.svg" alt="paper">
+          </div>
+        </div>
+      </div>
+      <div class="choice_btn" id="scissors">
+        <div id="scissors_out" class="center">
+          <div class="choice center">
+          <img src="./images/icon-scissors.svg" alt="scissors">
+          </div>
+        </div>  
+      </div>
+      <div class="choice_btn" id="rock">
+        <div id="rock_out" class="center"> 
+          <div class="choice center">
+          <img src="./images/icon-rock.svg" alt="rock">
+        </div>
+        </div>
+      </div>
+    </section>
+
+     <section id="result_pane" class="hide">
+
+        <h1 id="ppheading" class="result_title">you picked</h1>
+        <h1 id="cpheading" class="result_title">the house picked</h1>
+        
+        <div class="hide" id="decWinner"> 
+          <div id="dec_title">you lose</div>
+          <div id="dec_btn" class="center">
+            <button>play again</button>
+          </div>
+        </div>
+        </section> 
+  </div>  
+
+
+       
+
+  <div class="test">
+    <button id="rule" > rule</button>
+  </div>
+
+     <div id="rule_modal"class="center hide">
+    <div id="modal_content" >
+        <div id="modal_text">
+          <span>rules</span>
+          <img src="./images/icon-close.svg" alt="Close Icon" id="modal_icon">
+        </div>
+        <div id="modal_img" class="center">
+          <img src="./images/image-rules-bonus.svg" alt="Modal Image">
+        </div>
+      </div>
+    </div>
+
+    <script src="./javaScript/bonus.js"></script>
+
+</body>
+</html>
