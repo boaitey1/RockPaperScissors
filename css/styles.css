@@ -1,0 +1,327 @@
+
+@import url('https://fonts.google.com/specimen/Barlow+Semi+Condensed');
+/* variables */
+:root{
+    --light_text: rgb(255, 255, 255);
+    --dark_text: hsl(228, 25%, 31%);
+    --score_text: hsl(229, 64%, 46%);
+    --header_outline: hsl(217, 16%, 45%);
+    --bg_grad1:hsl(214, 47%, 23%);
+    --bg_grad2:hsl(237, 49%, 15%);
+    --scissors_grad1: hsl(39, 89%, 49%);
+    --scissors_grad2: hsl(28, 77%, 44%);
+    --paper_grad1: hsl(230, 89%, 62%);
+    --paper_grad2:   hsl(230, 64%, 46%);
+    --rock_grad1: hsl(349, 71%, 52%);
+    --rock_grad2: hsl(347, 75%, 35%);
+/* 
+    --lizard_grad1: hsl(261, 73%, 60%);
+    --lizard_grad2: hsl(261, 72%, 63%);
+    --Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%); */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Barlow Semi Condensed;
+}
+body{
+
+    font-weight: 600 700;
+    text-transform: uppercase;
+    background: radial-gradient(at top,var(--bg_grad1), var(--bg_grad2))  no-repeat ;
+    min-height: 100vh;
+    position: relative;
+
+}
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hide{
+    display: none !important;
+}
+
+/* header styling */
+ .container{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 35px;
+    height: 100vh ;
+ }
+#header{
+        border: 1px solid var(--header_outline);
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 150px;
+        width: 700px;
+        margin: 0 auto;
+        border-radius: 15px;
+}
+#header img, #rule_modal img{
+   height: 100%;
+
+}
+
+#score_box{
+    background-color: var(--light_text);
+    width: 150px;
+    height: 114px;
+    flex-direction: column;
+    border-radius: 15px;
+    z-index: 1;
+
+}
+#score_title{
+    color: var(--score_text);
+    font-size: 16px;
+    letter-spacing: 2.5px;
+}
+#score_number{
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--dark_text);
+    line-height: 1;
+}
+ /* game_section */
+ #game_section{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: "paper scissors" "rock rock";
+    place-items: center;
+    height: 430px;
+    margin: 40px auto;
+    width: 700px;
+
+    
+ }
+ #bg_triangle{
+    position: absolute;
+    height: 180px;
+    width:250px;
+    top:140px;
+    z-index: -1;
+    scale: 1.5;
+ }
+ #paper{
+    grid-area: paper;
+ } 
+ #scissors{
+    grid-area: scissors;
+ } 
+ #rock{
+    grid-area:rock;
+ }
+button{
+    all: unset;
+    cursor: pointer;
+ }
+  img{
+    height: 80px;
+ 
+ }
+ .choice{
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    width:  145px;
+    height: 145px;
+    box-shadow: inset 0 7px rgba(0, 0, 0, 0.158) ;
+ }
+#rock_out{
+    background-color: var(--rock_grad1);
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     box-shadow: 0 7px var(--rock_grad2) ;
+ }
+#paper_out{
+    background-color: var(--paper_grad1);
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     box-shadow: 0 7px  var(--paper_grad2);
+ }
+ #scissors_out{
+    background-color:  var(--scissors_grad1);
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     box-shadow: 0 7px  var(--scissors_grad2);
+ }
+ .choice::after{
+    content: "";
+    position: absolute;
+    background-color:  rgba(55, 62, 90, 0);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    z-index: -2;
+   
+ }
+ .choice_btn:hover .choice::after{
+    background-color:  rgba(55, 62, 90, 0.3);
+    transition: 0.3s ease-in-out;
+ } 
+
+ /* result */
+  
+
+#result_pane{
+    width: 700px; 
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: "ppheading cpheading" "playerPicked cpuPicked";
+    place-items: center; 
+}
+
+#ppheading{
+    grid-area: ppheading;
+}
+#cpheading{
+    grid-area: cpheading;
+}
+#cpuPicked{
+    grid-area: cpuPicked;
+    scale: 1.2; 
+   
+}
+#playerPicked{
+    grid-area: playerPicked;
+    scale: 1.2; 
+}
+#result_pane.col3{
+    
+    width: 950px; 
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas: "ppheading . cpheading" "playerPicked decWinner cpuPicked";
+    place-items: center; 
+}
+
+#decWinner{
+    grid-area: decWinner;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    padding-top: 60px;
+    z-index: 1;
+}
+
+
+.result_title{
+    margin: 80px auto ;
+    font-size: 24px;
+    letter-spacing: 2.5px;
+    color: var(--light_text);
+    z-index: 1;
+ 
+}
+.circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+} 
+
+#dec_title{
+    font-size: 44px;
+    color: var(--light_text);
+    font-weight: 800;
+}
+#dec_btn{
+    font-size: 16px;
+    background: var(--light_text);
+    color: var(--dark_text);
+    font-weight: 700;
+    width: 220px;
+    height: 48px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+
+.winner .choice::after{
+    width: 200px;
+    height: 200px;
+     box-shadow: 0 0 0 40px rgba(59, 67, 99, 0.692),0 0 0 90px rgba(50, 57, 87, 0.699), 0 0 0 160px rgba(37, 43, 66, 0.7) ;
+     z-index: -2;
+    animation: zoom 1.6s ease-in-out infinite;
+ }
+
+ @keyframes zoom {
+    
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 0.4;
+    }
+ }
+
+
+ /* rules button */
+ #rule{
+    color: var(--light_text);
+    border: 3px solid var(--header_outline);
+    border-radius: 8px;
+    width: 128px;
+    height: 40px;
+    position: absolute;
+    right: 34px;
+    bottom: 34px;
+    text-align: center;
+    letter-spacing: 2.5px;
+ }
+ #rule:hover {
+    background: var(--light_text);
+    color: var(--dark_text);
+    transition: 0.3s ease-in-out;
+ }
+/* rule modal */
+#rule_modal{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.801);
+    z-index: 1;
+
+    
+}
+ 
+#modal_content{
+    height: 415px;
+    width: 400px;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.089);
+    border-radius: 15px;
+}
+#modal_text{
+    color: var(--dark_text);
+    font-size: 32px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+#modal_img{
+    margin-top: 45px;
+}
+#modal_icon{
+    height: 32px;
+    cursor: pointer;
+    padding-top:7px ;
+}
+#modal_icon:hover{
+    scale: 1.5 ;
+} 
+
+
