@@ -7,7 +7,7 @@ const cpuChoice = document.getElementById('cpu_choice');
 const choices = document.querySelectorAll('.choice_btn');
 const gameSection = document.getElementById('game_section');
 const resultPane = document.getElementById('result_pane');
-var score = parseInt(document.getElementById('score_number').innerText) ;
+var   score = parseInt(document.getElementById('score_number').innerText) ;
 const decTitle  = document.getElementById('dec_title')
 const decBtn = document.getElementById('dec_btn')
 
@@ -47,7 +47,7 @@ const aniwon = () => {
     sessionStorage.setItem('score', score);
 
     document.getElementById('playerPicked').classList.toggle('winner')
-    }, 500);
+    }, 3000);
 }
 
 // Function to execute when player loses
@@ -66,7 +66,7 @@ const anilose= () => {
 
     document.getElementById('cpuPicked').classList.toggle('winner')
 
-    }, 500); 
+    }, 3000); 
 }
 
 // Function to execute in case of a tie
@@ -78,9 +78,8 @@ const anidraw =() => {
     decBtn.style.color = "var(--text-dark)";
     decTitle.innerText = "it's a tie";
 
-  }, 500);
+  }, 3000);
 }
-
 
 // generate random cpu choice
 function cpuRandom() {
@@ -111,10 +110,11 @@ function playGame(event) {
   cpu...${cpuChoice}`);
 
   if (pChoice === cpuChoice) {
-    // It's a draw
+
+    // draw
     append(pChoice, "playerPicked");
     anidraw();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   } else if (
     (pChoice === "rock" && (cpuChoice === "scissors" || cpuChoice === "lizard")) ||
     (pChoice === "paper" && (cpuChoice === "rock" || cpuChoice === "spock")) || 
@@ -125,12 +125,13 @@ function playGame(event) {
     // Player wins
     append(pChoice, "playerPicked");
     aniwon();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   } else {
     // Player loses
     append(pChoice, "playerPicked");
     anilose();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
+  
   }
   
   

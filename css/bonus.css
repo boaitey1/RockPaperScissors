@@ -179,15 +179,14 @@ button{
      border-radius: 50%;
      box-shadow: 0 5px  var(--scissors_grad2);
  }
-
  .choice::after{
     content: "";
     position: absolute;
     background-color:  rgba(55, 62, 90, 0);
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 191px;
     border-radius: 50%;
-    z-index: -3 !important;
+    z-index: -1;
    
  }
  .choice_btn:hover .choice::after{
@@ -195,9 +194,7 @@ button{
     transition: 0.3s ease-in-out;
  } 
 
- /* result */
-  
-
+ /* result  section*/
 #result_pane{
     width: 700px; 
     margin: 0px auto;
@@ -205,8 +202,8 @@ button{
     grid-template-columns: repeat(2,1fr);
     grid-template-areas: "ppheading cpheading" "playerPicked cpuPicked";
     place-items: center; 
+    position: relative;
 }
-
 #ppheading{
     grid-area: ppheading;
 }
@@ -231,7 +228,6 @@ button{
     grid-template-areas: "ppheading . cpheading" "playerPicked decWinner cpuPicked";
     place-items: center; 
 }
-
 #decWinner{
     grid-area: decWinner;
     height: 100%;
@@ -241,8 +237,6 @@ button{
     padding-top: 60px;
     z-index: 1;
 }
-
-
 .result_title{
     margin: 80px auto ;
     margin-bottom: 140px;
@@ -252,13 +246,30 @@ button{
     z-index: 1;
  
 }
-.circle{
-    width: 200px;
-    height: 200px;
+#circle{
+    position: absolute;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
-} 
+    background-color: rgba(0, 0, 0, 0.2);
+    animation: circleani  0.7s ease-in-out 3;
+    opacity: 0;
 
+} 
+@keyframes circleani {
+    from{
+        top: 205px;
+        right: 74px;
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+    to{
+        top: 185px;
+        right: 19px;
+        width: 300px;
+        height: 300px;
+        opacity: 1;
+    }
+}
 #dec_title{
     font-size: 44px;
     color: var(--light_text);
@@ -275,15 +286,12 @@ button{
     cursor: pointer;
     border-radius: 8px;
 }
-
-
 .winner .choice::after{
     width: 130px;
     height: 130px;
      z-index: -2;
     animation: zoom 2s infinite;
  }
-
  @keyframes zoom {
     
     from{
@@ -294,7 +302,6 @@ button{
         opacity: 0.2;
     }
  }
-
 
  /* rules button */
  #rule{
@@ -314,6 +321,7 @@ button{
     color: var(--dark_text);
     transition: 0.3s ease-in-out;
  }
+
 /* rule modal */
 #rule_modal{
     position: absolute;
@@ -322,10 +330,7 @@ button{
     width: 100%;
     background: rgba(0, 0, 0, 0.801);
     z-index: 1;
-
-    
 }
- 
 #modal_content{
     height: 465px;
     width: 400px;
@@ -354,11 +359,11 @@ button{
 } 
 
 
-
+/* @375 media responsiveness */
 @media ( max-width:375px ){
   .container{
       width: 85%;     }
-/*  */
+/*header section*/
       #header{
           width: 311px ;
           height: 96px;
@@ -377,7 +382,7 @@ button{
           font-weight: 700;
       }
 
-/*  */
+/*game section*/
 #game_section{
   height: 300px;
   margin-top: 70px ;
@@ -396,7 +401,6 @@ img{
   height: 73px;
   box-shadow: inset 0 4px rgba(0, 0, 0, 0.158) ;
 }
-
 #scissors_out, #paper_out, #rock_out, #spock_out, #lizard_out {
     height: 96px;
     width: 97px;
@@ -431,14 +435,13 @@ img{
  #paper{
     margin-left: 50px;
  }
- 
 .choice::after{
   width: 90px;
   height: 90px;
 }
 
 
-/*  */
+/* result section */
   #result_pane{
       width: 100%; 
       margin-top: 80px ;
@@ -451,7 +454,6 @@ img{
       grid-template-columns: repeat(2,1fr);
       grid-template-areas: "playerPicked  cpuPicked"  "ppheading  cpheading" "decWinner decWinner";
   }
-
   #decWinner{
       padding-top: 0;
   }
@@ -463,14 +465,51 @@ img{
       margin-top: 18px;
   }
   #cpuPicked, #playerPicked{
-      scale: 1.4; 
-     
+      scale: 1.4;  
   }
   #cpuPicked.winner, #playerPicked.winner{
       z-index: -1; 
   }
+  .result_title{
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 60px;
+    margin-bottom:80px;
+  
+  }
+  .winner .choice::after{
+    width: 100px;
+    height: 100px;
+  }
+  @keyframes zoom {
+    
+    from{
+        opacity: 0;
+    }
+    to{ 
+        box-shadow: 0 0 0 20px rgba(84, 93, 131, 0.692),0 0 0 40px rgba(70, 78, 112, 0.699), 0 0 0 60px rgba(66, 74, 109, 0.7) ;
+        opacity: 0.2;
+    }
+ }
 
-/*  */
+ @keyframes circleani {
+    from{
+        width: 90px;
+        height: 90px;
+        top: 9px;
+        right: 30px;
+        opacity: 0;
+    }
+    to{
+        width: 110px;
+        height: 110px;
+        top: 0;
+        right: 20px;
+        opacity: 1;
+    }
+}
+
+/*  rule button */
 .test{
   position: absolute;
   bottom: 0;
@@ -488,14 +527,7 @@ img{
   font-size: 12px;
 }
 
-.result_title{
-  font-size: 11px;
-  font-weight: 800;
-  margin-top: 60px;
-  margin-bottom:80px;
-
-}
-/*  */
+/* rule modal */
 #modal_content{
 height: 100vh;
 width: 100%;
@@ -507,7 +539,7 @@ margin: 50px ;
 justify-content: center;
 }
 #modal_img img{
-margin-top: 90px;
+margin-top: 45px;
 width: 100%;
 }
 #modal_icon{
@@ -515,21 +547,6 @@ height: 32px !important;
 position: absolute;
 bottom: 10%;
 }
-
-.winner .choice::after{
-  width: 100px;
-  height: 100px;
-}
-@keyframes zoom {
-    
-    from{
-        opacity: 0;
-    }
-    to{ 
-        box-shadow: 0 0 0 20px rgba(84, 93, 131, 0.692),0 0 0 40px rgba(70, 78, 112, 0.699), 0 0 0 60px rgba(66, 74, 109, 0.7) ;
-        opacity: 0.2;
-    }
- }
   
 }
 
