@@ -149,7 +149,7 @@ button{
      width: 145px;
      height: 148px;
      border-radius: 50%;
-     box-shadow: 0 7px var(--cyan_grad2) ;
+     box-shadow: 0 5px var(--cyan_grad2) ;
  }
  #lizard_out{
     background-color: var(--lizard_grad1);

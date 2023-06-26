@@ -125,28 +125,28 @@ button{
     border-radius: 50%;
     width:  145px;
     height: 145px;
-    box-shadow: inset 0 7px rgba(0, 0, 0, 0.158) ;
+    box-shadow: inset 0 6px rgba(0, 0, 0, 0.158) ;
  }
 #rock_out{
     background-color: var(--rock_grad1);
      width: 200px;
      height: 200px;
      border-radius: 50%;
-     box-shadow: 0 7px var(--rock_grad2) ;
+     box-shadow: 0 6px var(--rock_grad2) ;
  }
 #paper_out{
     background-color: var(--paper_grad1);
      width: 200px;
      height: 200px;
      border-radius: 50%;
-     box-shadow: 0 7px  var(--paper_grad2);
+     box-shadow: 0 6px  var(--paper_grad2);
  }
  #scissors_out{
     background-color:  var(--scissors_grad1);
      width: 200px;
      height: 200px;
      border-radius: 50%;
-     box-shadow: 0 7px  var(--scissors_grad2);
+     box-shadow: 0 6px  var(--scissors_grad2);
  }
  .choice::after{
     content: "";
