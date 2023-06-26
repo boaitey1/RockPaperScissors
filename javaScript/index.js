@@ -48,7 +48,7 @@ const aniwon = () => {
     sessionStorage.setItem('score', score);
 
     document.getElementById('playerPicked').classList.toggle('winner')
-    }, 500);
+    }, 3000);
 }
 
 // Function to execute when player loses
@@ -67,7 +67,7 @@ const anilose= () => {
 
     document.getElementById('cpuPicked').classList.toggle('winner')
 
-    }, 500); 
+    }, 3000); 
 }
 
 // Function to execute in case of a tie
@@ -79,7 +79,7 @@ const anidraw =() => {
     decBtn.style.color = "var(--text-dark)";
     decTitle.innerText = "it's a tie";
 
-  }, 500);
+  }, 3000);
 }
 
 
@@ -108,10 +108,10 @@ function playGame(event) {
   cpu...${cpuChoice}`);
 
   if (pChoice === cpuChoice) {
-    // It's a draw
+    // draw
     append(pChoice, "playerPicked");
     anidraw();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   } else if (
     (pChoice === "rock" && cpuChoice === "scissors") ||
     (pChoice === "paper" && cpuChoice === "rock") ||
@@ -120,12 +120,12 @@ function playGame(event) {
     // Player wins
     append(pChoice, "playerPicked");
     aniwon();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   } else {
     // Player loses
     append(pChoice, "playerPicked");
     anilose();
-    append(cpuChoice, "cpuPicked");
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   }
   
   

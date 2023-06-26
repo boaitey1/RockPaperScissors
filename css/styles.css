@@ -90,7 +90,7 @@ body{
     grid-template-areas: "paper scissors" "rock rock";
     place-items: center;
     height: 430px;
-    margin: 40px auto;
+    margin: 80px auto;
     width: 700px;
 
     
@@ -163,9 +163,7 @@ button{
     transition: 0.3s ease-in-out;
  } 
 
- /* result */
-  
-
+ /* result section  */
 #result_pane{
     width: 700px; 
     margin: 0px auto;
@@ -173,8 +171,8 @@ button{
     grid-template-columns: repeat(2,1fr);
     grid-template-areas: "ppheading cpheading" "playerPicked cpuPicked";
     place-items: center; 
+    position: relative;
 }
-
 #ppheading{
     grid-area: ppheading;
 }
@@ -183,15 +181,14 @@ button{
 }
 #cpuPicked{
     grid-area: cpuPicked;
-    scale: 1.2; 
+    scale: 1.5;
 
 }
 #playerPicked{
     grid-area: playerPicked;
-    scale: 1.2; 
+    scale: 1.5;
 }
-#result_pane.col3{
-    
+#result_pane.col3{  
     width: 950px; 
     margin: 0px auto;
     display: grid;
@@ -199,7 +196,6 @@ button{
     grid-template-areas: "ppheading . cpheading" "playerPicked decWinner cpuPicked";
     place-items: center; 
 }
-
 #decWinner{
     grid-area: decWinner;
     height: 100%;
@@ -209,23 +205,38 @@ button{
     padding-top: 60px;
     z-index: 1;
 }
-
-
 .result_title{
     margin: 80px auto ;
+    margin-bottom: 140px ;
     font-size: 24px;
     letter-spacing: 2.5px;
     color: var(--light_text);
     z-index: 1;
  
 }
-.circle{
-    width: 200px;
-    height: 200px;
+#circle{
+    position: absolute;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    animation: circleani  0.7s ease-in-out 3;
+    opacity: 1;
 } 
-
+@keyframes circleani {
+    from{
+        top: 250px;
+        right: 60px;
+        width: 190px;
+        height: 190px;
+        opacity: 0;
+    }
+    to{
+        top: 240px;
+        right: 55px;
+        width: 230px;
+        height: 230px;
+        opacity: 1;
+    }
+}
 #dec_title{
     font-size: 44px;
     color: var(--light_text);
@@ -242,15 +253,12 @@ button{
     cursor: pointer;
     border-radius: 8px;
 }
-
-
 .winner .choice::after{
     width: 200px;
     height: 200px;
      z-index: -2;
     animation: zoom 2s infinite;
  }
-
  @keyframes zoom {
     
     from{
@@ -261,7 +269,6 @@ button{
         opacity: 0.2;
     }
  }
-
 
  /* rules button */
  #rule{
@@ -291,8 +298,7 @@ button{
     z-index: 1;
 
     
-}
- 
+} 
 #modal_content{
     height: 415px;
     width: 400px;
@@ -320,27 +326,25 @@ button{
     scale: 1.5 ;
 } 
 
-
+/* @ media 375 responsiveness */
 @media ( max-width:375px ){
 
     
     .container{
         width: 85%;     }
-  /*  */
+
+/* header section */
         #header{
             width: 311px ;
             height: 96px;
         }
         #score_box{
-            background-color: var(--light_text);
             width: 80px;
             height: 72px;
-            flex-direction: column;
             border-radius: 8px;
   
         }
         #score_title{
-            color: var(--score_text);
             font-size: 10px;
             letter-spacing: 1.56px;
         
@@ -348,14 +352,11 @@ button{
         #score_number{
             font-size: 40px;
             font-weight: 700;
-            color: var(--dark_text);
         }
   
-  /*  */
-  
+/* game section  */
   #game_section{
     height: 300px;
-    margin-top: 70px ;
     width: 100%;
   }
   #bg_triangle{
@@ -372,7 +373,6 @@ button{
     height: 100px;
     box-shadow: inset 0 5px rgba(0, 0, 0, 0.158) ;
   }
-  
   #scissors_out, #paper_out, #rock_out {
      width: 133px;
      height: 130px;
@@ -393,22 +393,18 @@ button{
   }
   
   
-  /*  */
+/* result section */
     #result_pane{
         width: 100%; 
-        margin-top: 80px ;
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
+        margin-top: 90px ;
         grid-template-areas:  "playerPicked cpuPicked" "ppheading cpheading";
-        place-items: center; 
+         
     }
     #result_pane.col3{    
         width: 100%; 
-        margin-top: 80px ;
-        display: grid;
-        grid-template-columns: repeat(2,1fr) !important;
+        margin-top: 90px ;
+        grid-template-columns: repeat(2,1fr);
         grid-template-areas: "playerPicked  cpuPicked"  "ppheading  cpheading" "decWinner decWinner";
-        place-items: center; 
     }
   
     #decWinner{
@@ -423,13 +419,41 @@ button{
     }
     #cpuPicked, #playerPicked{
         scale: 1; 
-       
     }
     #cpuPicked.winner, #playerPicked.winner{
         z-index: -1; 
     }
+    .winner .choice::after{
+        width: 135px;
+        height: 135px;
+    
+     }
+     @keyframes zoom {
+        
+        from{
+            opacity: 0;
+        }
+        to{ 
+            box-shadow: 0 0 0 20px rgba(84, 93, 131, 0.692),0 0 0 40px rgba(70, 78, 112, 0.699), 0 0 0 60px rgba(66, 74, 109, 0.7) ;
+            opacity: 0.2;
+        }
+     }
+    @keyframes circleani {
+        from{
+            width: 90px;
+            height: 90px;
+            top: 22px;
+            right: 30px;
+        }
+        to{
+            width: 110px;
+            height: 110px;
+            top: 12px;
+            right: 20px;
+        }
+    }
 
-  /*  */
+  /* rule button */
   .test{
     position: absolute;
     bottom: 0;
@@ -437,7 +461,6 @@ button{
     justify-content: center;
     width: 100%;
   }
-  
   #rule{
     position: unset;
     width: 128px;
@@ -446,14 +469,15 @@ button{
     letter-spacing: 1.5px;
     font-size: 12px;
   }
-  
   .result_title{
     font-size: 11px;
     font-weight: 800;
     margin-top: 40px;
+    margin-bottom: 90px;
   
   }
-  /*  */
+
+  /* modal section */
   #modal_content{
   height: 100vh;
   width: 100%;
@@ -473,13 +497,5 @@ button{
   position: absolute;
   bottom: 10%;
   }
-  
-  .winner .choice::after{
-    width: 130px;
-    height: 130px;
-     box-shadow: 0 0 0 25px rgba(59, 67, 99, 0.692),0 0 0 50px rgba(50, 57, 87, 0.699), 0 0 0 70px rgba(37, 43, 66, 0.7) ;
-     z-index: -2;
-    animation: zoom 1.6s ease-in-out infinite;
-  }
-    
+   
   }
