@@ -12,6 +12,28 @@ const decTitle  = document.getElementById('dec_title')
 const decBtn = document.getElementById('dec_btn')
 
 
+//function to create and append choice 
+const append = (choice, picked ) => {
+  const newElement = document.createElement('div');
+  newElement.id = picked;
+  resultPane.appendChild(newElement);
+
+  const outerDiv = document.createElement('div');
+  outerDiv.id = `${choice}_out`;
+  outerDiv.classList.add('center');
+
+  const innerDiv = document.createElement('div');
+  innerDiv.classList.add('choice', 'center');
+
+  const image = document.createElement('img');
+  image.src = `./images/icon-${choice}.svg`;
+  image.alt = `${choice}`;
+
+  innerDiv.appendChild(image);
+  outerDiv.appendChild(innerDiv);
+  newElement.appendChild(outerDiv);
+}
+
 // Function to execute when player wins
 const aniwon = () => {
     setTimeout(() => {
@@ -26,7 +48,7 @@ const aniwon = () => {
     sessionStorage.setItem('score', score);
 
     document.getElementById('playerPicked').classList.toggle('winner')
-    }, 500);
+    }, 3000);
 }
 
 // Function to execute when player loses
@@ -45,7 +67,7 @@ const anilose= () => {
 
     document.getElementById('cpuPicked').classList.toggle('winner')
 
-    }, 500); 
+    }, 3000); 
 }
 
 // Function to execute in case of a tie
@@ -57,75 +79,9 @@ const anidraw =() => {
     decBtn.style.color = "var(--text-dark)";
     decTitle.innerText = "it's a tie";
 
-  }, 500);
+  }, 3000);
 }
 
-// Function to append rock choice to the result pane
-const appendRock = (picked) => {
-    const newElement = document.createElement('div');
-    newElement.id = picked;
-    resultPane.appendChild(newElement);
-  
-    const outerDiv = document.createElement('div');
-    outerDiv.id = 'rock_out';
-    outerDiv.classList.add('center');
-    newElement.appendChild(outerDiv);
-  
-    const innerDiv = document.createElement('div');
-    innerDiv.classList.add('choice', 'center');
-   outerDiv.appendChild(innerDiv);
-  
-    const image = document.createElement('img');
-    image.src = './images/icon-rock.svg';
-    image.alt = 'rock';
-    innerDiv.appendChild(image);
-   
-  
-  }
-  
-// Function to append scissors choice to the result pane
-  const appendScissors = (picked) => {
-    const newElement = document.createElement('div');
-    newElement.id = picked;
-    resultPane.appendChild(newElement);
-  
-    const outerDiv = document.createElement('div');
-    outerDiv.id = 'scissors_out';
-    outerDiv.classList.add('center');
-  
-    const innerDiv = document.createElement('div');
-    innerDiv.classList.add('choice', 'center');
-  
-    const image = document.createElement('img');
-    image.src = './images/icon-scissors.svg';
-    image.alt = 'scissors';
-  
-    innerDiv.appendChild(image);
-    outerDiv.appendChild(innerDiv);
-    newElement.appendChild(outerDiv);
-  }
-
-// Function to append paper choice to the result pane
-  const appendPaper = (picked) => {
-    const newElement = document.createElement('div');
-    newElement.id = picked;
-    resultPane.appendChild(newElement);
-  
-    const outerDiv = document.createElement('div');
-    outerDiv.id = 'paper_out';
-    outerDiv.classList.add('center');
-  
-    const innerDiv = document.createElement('div');
-    innerDiv.classList.add('choice', 'center');
-  
-    const image = document.createElement('img');
-    image.src = './images/icon-paper.svg';
-    image.alt = 'paper';
-  
-    innerDiv.appendChild(image);
-    outerDiv.appendChild(innerDiv);
-    newElement.appendChild(outerDiv);
-  }
 
 // generate random cpu choice
 function cpuRandom() {
@@ -151,50 +107,28 @@ function playGame(event) {
   console.log(`player...${pChoice}
   cpu...${cpuChoice}`);
 
-  if (pChoice === "rock") {
-    if (cpuChoice === "rock") {
-      appendRock("playerPicked");
-      anidraw();
-      appendRock("cpuPicked");
-    } else if (cpuChoice === "paper") {
-      appendRock("playerPicked");
-      anilose();
-      appendPaper("cpuPicked");
-    } else if (cpuChoice === "scissors") {
-      appendRock("playerPicked");
-      aniwon();
-      appendScissors("cpuPicked");
-    }
-  } 
-  else if (pChoice === "paper") {
-    if (cpuChoice === "rock") {
-      appendPaper("playerPicked");
-        aniwon();
-      appendRock("cpuPicked");
-    } else if (cpuChoice === "paper") {
-      appendPaper("playerPicked");
-        anidraw();
-      appendPaper("cpuPicked");
-    } else if (cpuChoice === "scissors") {
-      appendPaper("playerPicked");
-        anilose();
-      appendScissors("cpuPicked");
-    }
-  } else if (pChoice === "scissors") {
-    if (cpuChoice === "rock") {
-      appendScissors("playerPicked");
-        anilose();
-      appendRock("cpuPicked");
-    } else if (cpuChoice === "paper") {
-      appendScissors("playerPicked");
-        aniwon();
-      appendPaper("cpuPicked");
-    } else if (cpuChoice === "scissors") {
-      appendScissors("playerPicked");
-        anidraw();
-      appendScissors("cpuPicked");
-    }
+  if (pChoice === cpuChoice) {
+    // draw
+    append(pChoice, "playerPicked");
+    anidraw();
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
+  } else if (
+    (pChoice === "rock" && cpuChoice === "scissors") ||
+    (pChoice === "paper" && cpuChoice === "rock") ||
+    (pChoice === "scissors" && cpuChoice === "paper")
+  ) {
+    // Player wins
+    append(pChoice, "playerPicked");
+    aniwon();
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
+  } else {
+    // Player loses
+    append(pChoice, "playerPicked");
+    anilose();
+    setTimeout( ()=>{   append(cpuChoice, "cpuPicked");}, 2100)
   }
+  
+  
 }
 
 // Function to play the game again

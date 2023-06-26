@@ -12,6 +12,7 @@
 <body>
 
   <div class="container">
+<!-- HEADER SECTION -->
     <header id="header">
       <img src="./images/logo.svg" alt="header logo" class="logo">
         <div id="score_box" class="center">
@@ -20,6 +21,7 @@
         </div>
     </header>
 
+<!-- GAME SECTION -->
     <section id="game_section" class=" " >
       <img id="bg_triangle" src="/images/bg-triangle.svg" alt="">
       <div class="choice_btn " id="paper">
@@ -45,27 +47,28 @@
       </div>
     </section>
 
+<!-- RESULT PANE  -->
      <section id="result_pane" class="hide">
-
         <h1 id="ppheading" class="result_title">you picked</h1>
         <h1 id="cpheading" class="result_title">the house picked</h1>
-        
         <div class="hide" id="decWinner"> 
           <div id="dec_title">you lose</div>
           <div id="dec_btn" class="center">
             <button>play again</button>
           </div>
         </div>
+        <div id="circle"></div>
         </section> 
   </div>  
 
 
        
-
+<!-- RULE BUTTON -->
   <div class="test">
     <button id="rule" > rule</button>
   </div>
 
+<!-- RULE MODAL -->
      <div id="rule_modal"class="center hide">
     <div id="modal_content" >
         <div id="modal_text">
@@ -77,6 +80,7 @@
         </div>
       </div>
     </div>
+
 
     <script src="./javaScript/index.js"></script>
 
